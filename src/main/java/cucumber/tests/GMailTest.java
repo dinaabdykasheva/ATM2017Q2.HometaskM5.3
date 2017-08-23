@@ -13,7 +13,12 @@ import java.util.concurrent.TimeUnit;
  */
 
 @CucumberOptions(strict = true, plugin = { "json:target/cucumber-report.json",
-        "html:target/cucumber-report" }, tags = "@smokeTest", features = "src/main/resources/cucumber_feature/GMail_login.feature", glue = {
+        "html:target/cucumber-report" }, features = "src/main/resources/cucumber_feature/GMail.feature", glue = {
         "cucumber.steps" })
-public class GMailLoginTest extends AbstractTestNGCucumberTests {
+public class GMailTest extends AbstractTestNGCucumberTests {
+    @AfterClass(description = "closeDriver")
+    public void closeDriver() {
+        WebDriverSingleton.kill();
+    }
 }
+

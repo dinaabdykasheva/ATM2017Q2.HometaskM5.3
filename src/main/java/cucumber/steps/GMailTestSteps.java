@@ -15,7 +15,7 @@ import org.testng.annotations.Parameters;
 /**
  * Created by Dina_Abdykasheva on 8/21/2017.
  */
-public class GMailLoginSteps {
+public class GMailTestSteps {
     public DraftsFolderPage writeMail, openDraftFolder;
     public WriteMailPage openSavedDraft;
     public SentFolderPage sendMail;
@@ -52,26 +52,18 @@ public class GMailLoginSteps {
         Assert.assertTrue(isDraftMailSaved, "mentoring task");
     }
 
-    @And("^$user opens draft mail")
+    @And("^user opens draft mail$")
     public void openDraftMail() {
         openSavedDraft = new DraftsFolderPage().openDraftMail();
     }
 
-    @Then("^(.*) field is valid$")
-    public void verifyRecipientFieldIsValid(String recipient) {
+    @Then("^(.*), (.*) and (.*) fields are valid$")
+    public void verifyRecipientFieldIsValid(String recipient, String subject, String body) {
         String receiver = openSavedDraft.getReceiver();
-        Assert.assertEquals(recipient, receiver, "Receiver isn't valid");
-    }
-
-    @And("^(.*) field is valid$")
-    public void verifySubjectFieldISValid(String subject) {
         String mailSubject = new WriteMailPage().getSubject();
-        Assert.assertEquals(subject, mailSubject, "Subject isn't valid");
-    }
-
-    @And("^(.*) field is valid$")
-    public void verifyBodyFieldIsValid(String body) {
         String mailBody = new WriteMailPage().getBody();
+        Assert.assertEquals(recipient, receiver, "Receiver isn't valid");
+        Assert.assertEquals(subject, mailSubject, "Subject isn't valid");
         Assert.assertEquals(body, mailBody, "Body isn't valid");
     }
 
@@ -91,5 +83,16 @@ public class GMailLoginSteps {
         openDraftFolder = accountPage.openDrafts();
         boolean isMailDeletedFromDrafts = openDraftFolder.isDraftMailDisplayed(mail);
         Assert.assertFalse(isMailDeletedFromDrafts, "Mail isn't deleted from drafts");
+    }
+
+    @When("^user clicks sign out$")
+    public void clickSignOut() {
+        exitGMail = accountPage.exitGMail();
+    }
+
+    @Then("^user is signed out$")
+    public void verifyUserIsSignedOut() {
+        boolean isUserLoggedOff = exitGMail.isUserLoggedOff();
+        Assert.assertTrue(isUserLoggedOff, "User wasn't logged off");
     }
 }

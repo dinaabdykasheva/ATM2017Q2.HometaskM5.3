@@ -1,27 +1,22 @@
-Feature: GMail login test
-#comment is here - feature description for search testing
+Feature: GMail
+As a GMail user
+I want to create mail, save mail as draft and sent mail
 
-#recurrent actions/preconditions go below - in "Background" section
-#this section is optional.
-#Uncomment it and delete/comment duplicating step from Scenario description
-
-#Background:
-#Given user navigates to GMail start page
-
-@smokeTest
-Scenario Outline: GMail login
+Background:
 Given user navigates to GMail start page
+
+Scenario Outline: GMail test
 When user enters <username> and <password>
 Then  GMail account page is displayed
 When user fills in <recipient>, <subject>, <body> fields of mail and save mail to draft
 Then mail appears in drafts folder
 And user opens draft mail
-Then <recipient> field is valid
-And <subject> field is valid
-And <body> field is valid
+Then <recipient>, <subject> and <body> fields are valid
 When user sends mail
 Then mail is sent
 And mail is deleted from drafts
+When user clicks sign out
+Then user is signed out
 
 Examples:
 |username        |password  |recipient               |subject       |body     |

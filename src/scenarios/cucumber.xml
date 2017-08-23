@@ -7,7 +7,7 @@
         <parameter name="subject" value="mentoring task"/>
         <parameter name="body" value="body text"/>
         <classes>
-            <class name="cucumber.tests.GMailLoginTest"/>
+            <class name="cucumber.tests.GMailTest"/>
         </classes>
     </test>
 </suite>
