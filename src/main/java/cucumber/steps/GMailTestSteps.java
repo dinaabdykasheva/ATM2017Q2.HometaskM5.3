@@ -10,7 +10,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 
 /**
  * Created by Dina_Abdykasheva on 8/21/2017.

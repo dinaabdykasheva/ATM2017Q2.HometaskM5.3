@@ -2,11 +2,7 @@ package cucumber.tests;
 import core.driver.singleton.WebDriverSingleton;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dina_Abdykasheva on 8/21/2017.

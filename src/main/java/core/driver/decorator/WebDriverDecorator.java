@@ -1,6 +1,7 @@
 package core.driver.decorator;
 
 import core.utils.Logger;
+import core.utils.WebElementsUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,8 +37,16 @@ public class WebDriverDecorator implements WebDriver {
     }
 
     public WebElement findElement(By by) {
-        Logger.info("element was found");
-        return driver.findElement(by);
+        List<WebElement> elements = driver.findElements(by);
+        WebElement firstElement;
+        if (elements.size() != 0) {
+            firstElement = elements.get(0);
+            WebElementsUtils.executeJavaScript(driver, by, "arguments[0].style.backgroundColor = '"+ "yellow" + "'");
+        } else {
+            Logger.error("element not found");
+            return null;
+        }
+        return firstElement;
     }
 
     public String getPageSource() {

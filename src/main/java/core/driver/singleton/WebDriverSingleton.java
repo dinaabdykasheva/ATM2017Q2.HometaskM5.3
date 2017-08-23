@@ -1,6 +1,5 @@
 package core.driver.singleton;
 
-import core.driver.decorator.WebDriverDecorator;
 import core.driver.factory.ChromeDriverCreator;
 import core.driver.factory.WebDriverCreator;
 import core.utils.Logger;
@@ -22,8 +21,7 @@ public class WebDriverSingleton {
 
     private static WebDriver init() {
         WebDriverCreator creator = new ChromeDriverCreator();
-        WebDriver driver = creator.FactoryMethod();
-        driver = new WebDriverDecorator(driver);
+        WebDriver driver = creator.createWebDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
