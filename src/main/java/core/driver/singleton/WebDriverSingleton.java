@@ -1,7 +1,9 @@
 package core.driver.singleton;
 
 import core.driver.factory.ChromeDriverCreator;
+import core.driver.factory.FirefoxDriverCreator;
 import core.driver.factory.WebDriverCreator;
+import core.service.GlobalProperties;
 import core.utils.Logger;
 import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +22,14 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        WebDriverCreator creator = new ChromeDriverCreator();
+        WebDriverCreator creator;
+        if (GlobalProperties.BROWSER.equals("chrome")) {
+            creator = new ChromeDriverCreator();
+        } else if (GlobalProperties.BROWSER.equals("firefox")) {
+            creator = new FirefoxDriverCreator();
+        } else {
+            creator = new ChromeDriverCreator();
+        }
         WebDriver driver = creator.createWebDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
