@@ -33,7 +33,7 @@ public class GMailTestSteps {
 
     }
 
-    @Then("^GMail account page is displayed$")
+    @Then("^GMail account page should be displayed$")
     public void verifyGMailAccountPageIsDisplayed() {
         boolean isAccountIconPresent = accountPage.isAccountIconPresent();
         Assert.assertTrue(isAccountIconPresent, "User isn't logged in");
@@ -45,7 +45,7 @@ public class GMailTestSteps {
         writeMail = accountPage.clickWriteMailButton().writeMailAndSaveToDraft(mail);
     }
 
-    @Then("^mail appears in drafts folder$")
+    @Then("^mail should appear in drafts folder$")
     public void verifyMailSavedInDrafts() {
         boolean isDraftMailSaved = writeMail.isDraftMailDisplayed(mail);
         Assert.assertTrue(isDraftMailSaved, "mentoring task");
@@ -56,7 +56,7 @@ public class GMailTestSteps {
         openSavedDraft = new DraftsFolderPage().openDraftMail();
     }
 
-    @Then("^(.*), (.*) and (.*) fields are valid$")
+    @Then("^recipient, subject and body fields should contain valid values: (.*), (.*) and (.*)$")
     public void verifyRecipientFieldIsValid(String recipient, String subject, String body) {
         String receiver = openSavedDraft.getReceiver();
         String mailSubject = new WriteMailPage().getSubject();
@@ -71,7 +71,7 @@ public class GMailTestSteps {
         sendMail = new WriteMailPage().sendMail().openSentMail();
     }
 
-    @Then("^mail is sent$")
+    @Then("^mail should be sent$")
     public void verifyMailIsSent() {
         boolean isMailSent = sendMail.isMailSent(mail);
         Assert.assertTrue(isMailSent, "Mail wasn't sent");
@@ -89,7 +89,7 @@ public class GMailTestSteps {
         exitGMail = accountPage.exitGMail();
     }
 
-    @Then("^user is signed out$")
+    @Then("^user should be signed out$")
     public void verifyUserIsSignedOut() {
         boolean isUserLoggedOff = exitGMail.isUserLoggedOff();
         Assert.assertTrue(isUserLoggedOff, "User wasn't logged off");

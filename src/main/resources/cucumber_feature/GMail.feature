@@ -7,16 +7,16 @@ Given user navigates to GMail start page
 
 Scenario Outline: GMail test
 When user enters <username> and <password>
-Then  GMail account page is displayed
+Then  GMail account page should be displayed
 When user fills in <recipient>, <subject>, <body> fields of mail and save mail to draft
-Then mail appears in drafts folder
+Then mail should appear in drafts folder
 And user opens draft mail
-Then <recipient>, <subject> and <body> fields are valid
+Then recipient, subject and body fields should contain valid values: <recipient>, <subject> and <body>
 When user sends mail
-Then mail is sent
+Then mail should be sent
 And mail is deleted from drafts
 When user clicks sign out
-Then user is signed out
+Then user should be signed out
 
 Examples:
 |username        |password  |recipient               |subject       |body     |
