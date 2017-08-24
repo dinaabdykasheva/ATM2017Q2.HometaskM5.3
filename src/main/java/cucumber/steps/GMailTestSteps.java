@@ -77,7 +77,7 @@ public class GMailTestSteps {
         Assert.assertTrue(isMailSent, "Mail wasn't sent");
     }
 
-    @And("^mail is deleted from drafts$")
+    @And("^mail should be deleted from drafts$")
     public void verifyMailIsDeletedFromDrafts() {
         openDraftFolder = accountPage.openDrafts();
         boolean isMailDeletedFromDrafts = openDraftFolder.isDraftMailDisplayed(mail);

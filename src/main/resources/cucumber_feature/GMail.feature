@@ -14,7 +14,7 @@ And user opens draft mail
 Then recipient, subject and body fields should contain valid values: <recipient>, <subject> and <body>
 When user sends mail
 Then mail should be sent
-And mail is deleted from drafts
+And mail should be deleted from drafts
 When user clicks sign out
 Then user should be signed out
 
