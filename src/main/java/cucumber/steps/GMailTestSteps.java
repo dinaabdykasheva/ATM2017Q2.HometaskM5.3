@@ -5,7 +5,6 @@ import app.business_objects.User;
 import app.pages.*;
 import core.driver.singleton.WebDriverSingleton;
 import core.service.GlobalProperties;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
